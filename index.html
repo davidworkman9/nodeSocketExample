@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
+    <style>
+      .box {
+          width: 300px;
+          float: left;
+          margin: 0 20px 0 20px;
+      }
+      h1 {
+          margin-left: 30px;
+      }
+      body {
+          background-color: #F0F0F0;
+          font-family: "Arial";
+      }
+    </style>
+</head>
+  <body lang="en">
+      <h1>SockJS Example</h1>
+
+      <div id="values" class="box"></div>
+
+      <script>
+          var sockjs_url = '/echo';
+          var sockjs = new SockJS(sockjs_url);
+
+          sockjs.onmessage = function(e) {
+            $('#values')
+              .prepend('<div></div>')
+              .find('div')
+              .first().text(e.data);
+          };
+
+      </script>
+  </body>
+</html>
